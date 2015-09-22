@@ -82,3 +82,25 @@ class Computer_Player:
                 else:
                     print("Computer current turn score is {}.".format(computer_turn_bank))
                     computer_to_roll = True
+
+class Game:
+
+    def __init__(self):
+        self.rounds_counter = 0
+
+    def play_round(self):
+        da_ussa = User()
+        da_computa = Computer_Player()
+        da_ussa.user_turn()
+        print("=================")
+        da_computa.computer_turn()
+        self.rounds_counter +=1
+        print("You have played {} rounds".format(self.rounds_counter))
+        return "Your score is {}, and the computer's score is {}".format(da_ussa.user_bank, da_computa.computer_bank)
+
+    def play_game(self):
+        da_ussa = User()
+        da_computa = Computer_Player()
+        while self.rounds_counter < 7:
+            self.play_round()
+        return(da_ussa.user_bank, da_computa.computer_bank)
