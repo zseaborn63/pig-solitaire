@@ -78,3 +78,4 @@ the same one. The difference with this mode is that you are playing to a score o
 ## Additional Resources
 
 * [Classes in the Python documentation](https://docs.python.org/3/tutorial/classes.html#class-objects)
+* [SOLID principles](https://en.wikipedia.org/wiki/SOLID_(object-oriented_design))
