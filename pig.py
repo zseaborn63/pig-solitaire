@@ -21,7 +21,8 @@ class User:
         return self.user_curve
 
     def user_choose(self):
-        self.user_choice = input("Do you want to Roll again or Hold? R/H \n").lower()
+        self.user_choice = input("Do you want to Roll again "
+                                 "or Hold? R/H \n").lower()
         return self.user_choice
 
     def user_turn(self):
@@ -33,6 +34,7 @@ class User:
             if roll_num == 1:
                 user_turn_bank = 0
                 print("Round Over")
+                print("Your total round score is {}".format(self.user_bank))
                 player_to_roll = False
             else:
             user_turn_bank += roll_num
@@ -40,7 +42,7 @@ class User:
                 if user_decision == "h":
                     player_to_roll = False
                     self.user_bank += user_turn_bank
-                    print(self.user_bank)
+                    print("Your total round score is {}".format(self.user_bank))
                 else:
-                    print(user_turn_bank)
+                    print("Your current round score is {}".format(user_turn_bank))
                     player_to_roll = True
