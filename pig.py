@@ -96,11 +96,25 @@ class Game:
         da_computa.computer_turn()
         self.rounds_counter +=1
         print("You have played {} rounds".format(self.rounds_counter))
-        return "Your score is {}, and the computer's score is {}".format(da_ussa.user_bank, da_computa.computer_bank)
+        print("+++++++++++++++++++++")
+        return da_ussa.user_bank, da_computa.computer_bank
+
+    def score_keeper(self):
+        self.user_score = 0
+        self.computer_score = 0
+        da_ussa = User()
+        da_computa = Computer_Player()
+        for da_ussa.user_bank in self.play_round():
+            self.user_score += da_ussa.user_bank
+        for da_computa.computer_bank in self.play_round():
+            self.computer_score += da_computa.computer_bank
+        return self.user_score, self.computer_score
 
     def play_game(self):
         da_ussa = User()
         da_computa = Computer_Player()
+        self.score_keeper()
         while self.rounds_counter < 7:
             self.play_round()
-        return(da_ussa.user_bank, da_computa.computer_bank)
+            print(self.user_score, self.computer_score)
+        return self.user_score, self.computer_score
