@@ -1,7 +1,6 @@
 #This is my Pig Solitaire game
 import random
 
-import random
 
 class Dice:
 
@@ -37,8 +36,8 @@ class User:
                 print("Your total round score is {}".format(self.user_bank))
                 player_to_roll = False
             else:
-            user_turn_bank += user_roll_num
-            user_decision = self.user_choose()
+                user_turn_bank += user_roll_num
+                user_decision = self.user_choose()
                 if user_decision == "h":
                     player_to_roll = False
                     self.user_bank += user_turn_bank
@@ -87,34 +86,38 @@ class Game:
 
     def __init__(self):
         self.rounds_counter = 0
+        self.user_score = 0
+        self.computer_score = 0
 
     def play_round(self):
         da_ussa = User()
         da_computa = Computer_Player()
+        print("---------------------")
         da_ussa.user_turn()
-        print("=================")
+        print("=====================")
         da_computa.computer_turn()
         self.rounds_counter +=1
         print("You have played {} rounds".format(self.rounds_counter))
         print("+++++++++++++++++++++")
-        return da_ussa.user_bank, da_computa.computer_bank
-
-    def score_keeper(self):
-        self.user_score = 0
-        self.computer_score = 0
-        da_ussa = User()
-        da_computa = Computer_Player()
-        for da_ussa.user_bank in self.play_round():
-            self.user_score += da_ussa.user_bank
-        for da_computa.computer_bank in self.play_round():
-            self.computer_score += da_computa.computer_bank
+        self.computer_score += da_computa.computer_bank
+        self.user_score += da_ussa.user_bank
         return self.user_score, self.computer_score
+
+    def game_over(self):
+        pass
+
 
     def play_game(self):
-        da_ussa = User()
-        da_computa = Computer_Player()
-        self.score_keeper()
         while self.rounds_counter < 7:
             self.play_round()
-            print(self.user_score, self.computer_score)
-        return self.user_score, self.computer_score
+            print("User {}, Computer {}".format(self.user_score, self.computer_score))
+        print("The Final score is {} for the User and {} for the Computer".format(self.user_score, self.computer_score))
+        if self.user_score > self.computer_score:
+            print("User wins!")
+        elif self.user_score < self.computer_score:
+            print("The Computer wins!")
+        else:
+            print("The game was a tie!")
+
+game = Game()
+game.play_game()
